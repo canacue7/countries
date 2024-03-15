@@ -15,16 +15,14 @@ export class AutocompleteInputComponent {
 
   constructor(private http: HttpClient) {}
   // test = ['uno', 'dos']
-
-  oKeypress( searchThere: string){
-    this.deboucer.next(searchThere)
-    console.log(searchThere)
-  }
+  
+  isLoading: boolean = false;
+ 
   ngOnInit() {
-    console.log(this.deboucer)
+
     this.deboucer
     .pipe(
-      debounceTime(1000)
+      debounceTime(500)
     )
     .subscribe (data=> {
       this.http.get('http://localhost:3000/countries').subscribe(data=>{
@@ -35,5 +33,11 @@ export class AutocompleteInputComponent {
       console.log('debouser value: ', data)
     })
   }
+
+  oKeypress( searchThere: string){
+    this.deboucer.next(searchThere)
+    console.log(searchThere)
+  }
+
 
 }
