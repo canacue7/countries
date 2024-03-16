@@ -3,43 +3,46 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Subject, debounceTime } from 'rxjs';
 
 @Component({
-  selector: 'app-autocomplete-input',
+  selector: 'autocomplete-input',
   templateUrl: './autocomplete-input.component.html',
   styleUrl: './autocomplete-input.component.css'
 })
-export class AutocompleteInputComponent {
+export class AutocompleteComponent {
+[x: string]: any;
 
   private deboucer: Subject<string> = new Subject<string>
 
   @Output() public onSelect = new EventEmitter();
 
+  
   constructor(private http: HttpClient) {}
-  // test = ['uno', 'dos']
   
   isLoading: boolean = false;
  
+  paises: string [] = [];
   ngOnInit() {
 
     this.deboucer
     .pipe(
-      debounceTime(500)
+      debounceTime(1500)
     )
-    .subscribe (data=> {
-      this.http.get('http://localhost:3000/countries').subscribe(data=>{
-        console.log("entrando")
-        console.log(data)
+    .subscribe (query=> {
+      this.http.get<string[]>(`https://example.com/api/items?q=${query}`).subscribe(data=>{
+        this.paises = data;
+        // array metido a la fuerza :v
+        // this.paises = ['Italy', 'Polony', 'Spain', 'Germany']
         this.isLoading = false
       }
       )
-      console.log('debouser value: ', data)
     })
   }
 
   oKeypress( searchThere: string){
     this.isLoading = true;
     this.deboucer.next(searchThere)
-    console.log(searchThere)
   }
 
-
+  onEmitValue(pais:string){
+    this.onSelect.emit(pais)
+  }
 }

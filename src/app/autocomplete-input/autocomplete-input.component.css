@@ -4,8 +4,16 @@
     display: flex;
     justify-content: space-between;
 }
-
-.loader{
+.input{
+    display: block;
+    margin-bottom: 50px;
+}
+.control{
+    display: block;
+    margin-bottom: 50px;
+}
+.is-loading {
+    display: block;
     background: url(../../assets/loading.gif) no-repeat center ;
     background-size: contain; /*cover*/
     height: 15px;

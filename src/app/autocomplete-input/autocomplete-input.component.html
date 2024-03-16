@@ -1,16 +1,16 @@
 <div class="wrapper">
-  <div class="control">
-    <div class="container-input">
-      <div>
+  <div class="control" [ngClass]="{ 'is-loading': isLoading }">
         <input
           type="text"
           class="input"
           (keyup)="oKeypress(entrada.value)"
           #entrada
         />
-      </div>
-      <div [ngClass]="{ 'loader': isLoading }"></div>
+  </div>
+  <div *ngIf="paises.length">
+    <div *ngFor="let pais of paises" class="list is-hoverable">
+      <a class="list-item"  (click)='onEmitValue(pais)' href="#">{{pais}} </a>
     </div>
   </div>
-  <div class="list is-hoverable"></div>
+  <!-- <div [ngClass]="{ 'is-loading': isLoading }"></div> -->
 </div>

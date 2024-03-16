@@ -9,14 +9,14 @@ import { CommonModule } from '@angular/common';
 
 
 import {  HttpClientModule } from '@angular/common/http';
-import { AutocompleteInputComponent } from './autocomplete-input/autocomplete-input.component';
+import { AutocompleteComponent } from './autocomplete-input/autocomplete-input.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AutocompleteInputComponent
+    AutocompleteComponent
   ],
   imports: [
     CommonModule,
