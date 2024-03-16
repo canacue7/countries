@@ -1,6 +1,16 @@
 <div class="wrapper">
   <div class="control">
-    <input type="text" class="input" (keyup)="oKeypress(entrada.value)" #entrada/>
+    <div class="container-input">
+      <div>
+        <input
+          type="text"
+          class="input"
+          (keyup)="oKeypress(entrada.value)"
+          #entrada
+        />
+      </div>
+      <div [ngClass]="{ 'loader': isLoading }"></div>
+    </div>
   </div>
   <div class="list is-hoverable"></div>
 </div>
