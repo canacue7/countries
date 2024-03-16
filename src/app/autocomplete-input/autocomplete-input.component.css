@@ -1,0 +1,14 @@
+.container-input{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loader{
+    background: url(../../assets/loading.gif) no-repeat center ;
+    background-size: contain; /*cover*/
+    height: 15px;
+    width: 15px;
+    
+}

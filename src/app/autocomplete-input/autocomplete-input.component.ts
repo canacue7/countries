@@ -28,6 +28,7 @@ export class AutocompleteInputComponent {
       this.http.get('http://localhost:3000/countries').subscribe(data=>{
         console.log("entrando")
         console.log(data)
+        this.isLoading = false
       }
       )
       console.log('debouser value: ', data)
@@ -35,6 +36,7 @@ export class AutocompleteInputComponent {
   }
 
   oKeypress( searchThere: string){
+    this.isLoading = true;
     this.deboucer.next(searchThere)
     console.log(searchThere)
   }
